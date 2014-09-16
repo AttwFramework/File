@@ -9,34 +9,19 @@
 
 namespace Attw\File\Validator;
 
-use Attw\File\Validator\AbstractFileValidator;
-use Attw\File\FileInterface;
+use Attw\File\Validator\AbstractValidatorInArray;
 
-class MimeType extends AbstractFileValidator
+class MimeType extends AbstractValidatorInArray
 {
     /**
-     * Array with valid types
-     *
-     * @var array
+     * @var string
     */
-    private $types;
+    protected $fileMethod = 'getMimeType';
 
     /**
-     * Constructor
+     * Message to exception
      *
-     * @param array $types Valid types
+     * @var string
     */
-    public function __construct(array $types)
-    {
-        $this->types = $types;
-        $this->exceptionMsg = sprintf(
-            'The type of file is invalid. Valid types: %s',
-            implode(', ', $this->types)
-       );
-    }
-
-    protected function realValidation(FileInterface $file)
-    {
-        return in_array($file->getMimeType(), $this->types);
-    }
+    protected $exceptionMsg = 'The type of file is invalid. Valid types: {ARRAY}';
 }

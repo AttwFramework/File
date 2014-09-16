@@ -45,9 +45,9 @@ abstract class AbstractFileValidator implements FileValidatorInterface
     /**
      * Validate the file
      *
-     * @param instanceof Attw\File\File $file
+     * @param \Attw\File\FileInterface $file
      * @return boolean
-     * @throws Attw\File\Validator\Exception\FileValidatorException case fail and the exception
+     * @throws \Attw\File\Validator\Exception\FileValidatorException case fail and the exception
      *  are activated
     */
     public function validate(FileInterface $file)
@@ -69,5 +69,5 @@ abstract class AbstractFileValidator implements FileValidatorInterface
      * @param instanceof Attw\File\File $file
      * @return boolean
     */
-    abstract protected function realValidation(File $file);
+    abstract protected function realValidation(FileInterface $file);
 }
